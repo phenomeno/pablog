@@ -27,22 +27,9 @@ class PostTable extends React.Component {
     render() {
         var rows = [];
         var posts = this.props.posts;
-        return(
-            <div>
-            {posts.map(function(post){
-                return <PostRow key={post.id} title={post.title} text={post.text} />;
-            })}
-            </div>
-        )
-
-//        this.props.posts.forEach(function(post) {
-//            rows.push(<PostRow title={post.title} text={post.text} />);
-//        });
-//        return (
-//            <div>
-//                {rows}
-//            </div>
-//        )
+        return (<div>
+         {posts.map(post => <PostRow key={post.id} title={post.title} text={post.text} />)}
+        </div>);
     }
 }
 
