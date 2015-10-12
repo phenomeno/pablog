@@ -1,8 +1,16 @@
+global.__SERVER__ = true;
 import express from "express";
 import React from "react";
 import { match, RoutingContext } from "react-router";
 import { routes } from "./routes";
+import mysql from 'mysql';
 
+const db_pool = mysql.createPool({
+    host    : process.env['MYSQL_HOST'] || 'localhost',
+    user    : process.env['MYSQL_USER'],
+    password: process.env['MYSQL_PASSWORD'],
+    database: process.env['MYSQL_DATABASE']
+});
 const app = express();
 
 app.use('/img', express.static('img'));
@@ -17,6 +25,16 @@ app.get('/client.js', function(req, res){
     res.sendFile("/client.js", {
         root: './dist'
     });
+});
+
+app.get('/api/v1/posts', function(req, res) {
+    db_pool.getConnection(function(err, connection){
+        connection.query('SELECT * FROM posts', function(err, rows, fields) {
+            console.log(err, rows);
+            res.json({'posts': rows});
+            connection.release();
+        });
+    });   
 });
 
 app.get('/*', function (req, res) {

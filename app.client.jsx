@@ -1,3 +1,4 @@
+global.__SERVER__ = false;
 import React from 'react';
 import { routes } from './routes';
 

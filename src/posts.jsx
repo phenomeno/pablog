@@ -15,7 +15,7 @@ class PostRow extends React.Component {
                 <CardTitle title={this.props.title} subtitle="">
                 </CardTitle>
                 <CardText>
-                    {this.props.text}
+                    {this.props.body}
                 </CardText>
                </Card>
            </div>
@@ -28,7 +28,7 @@ class PostTable extends React.Component {
         var rows = [];
         var posts = this.props.posts;
         return (<div>
-         {posts.map(post => <PostRow key={post.id} title={post.title} text={post.text} />)}
+         {posts.map(post => <PostRow key={post.id} title={post.title} body={post.body} />)}
         </div>);
     }
 }
