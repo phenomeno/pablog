@@ -14,13 +14,13 @@ class BlogInfo extends React.Component {
     componentDidMount() {
         BlogInfoModel.get(function(data) {
             this.setState(data);
-        }.bind(this));  
+        }.bind(this));
     }
 
-    render() { 
+    render() {
         return (<div>
             <div style={{height: '8em', marginTop: '4.5em', position: 'relative'}}>
-                <img src={this.state.photoURL}  
+                <img src={this.state.photoURL}
                 id="bloginfo_img"/>
            </div>
             <h1 style={{fontSize: '56px', textAlign:'center', fontWeight: '300', marginBottom:'0px', marginTop:'0px'}}>
@@ -34,4 +34,3 @@ class BlogInfo extends React.Component {
 }
 
 module.exports = BlogInfo;
-
